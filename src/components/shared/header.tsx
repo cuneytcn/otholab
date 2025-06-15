@@ -82,10 +82,10 @@ const Header = () => {
                      <Link
                         href="/"
                         className="flex flex-col justify-center items-center">
-                        <span className="text-4xl lg:text-6xl drop-shadow-sm inline-block">
+                        <span className="text-4xl lg:text-6xl font-secondary drop-shadow-sm inline-block">
                            OthoLab.
                         </span>
-                        <span className="drop-shadow-sm text-base lg:text-lg inline-block">
+                        <span className="drop-shadow-sm text-base font-secondary lg:text-lg inline-block">
                            DesignStudio
                         </span>
                      </Link>
