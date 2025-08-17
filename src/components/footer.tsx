@@ -105,32 +105,24 @@ export default function Footer() {
                         </h3>
                         <ul className="space-y-3">
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 transition-colors hover:text-white">
+                                <p className="text-gray-400 transition-colors hover:text-white">
                                     Mimari Çizimler
-                                </a>
+                                </p>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 transition-colors hover:text-white">
+                                <p className="text-gray-400 transition-colors hover:text-white">
                                     3D Modelleme
-                                </a>
+                                </p>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 transition-colors hover:text-white">
+                                <p className="text-gray-400 transition-colors hover:text-white">
                                     İç Mekan Tasarımı
-                                </a>
+                                </p>
                             </li>
                             <li>
-                                <a
-                                    href="#"
-                                    className="text-gray-400 transition-colors hover:text-white">
+                                <p className="text-gray-400 transition-colors hover:text-white">
                                     Proje Danışmanlığı
-                                </a>
+                                </p>
                             </li>
                         </ul>
                     </div>
