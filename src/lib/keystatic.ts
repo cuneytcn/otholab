@@ -89,3 +89,35 @@ export const getAllCourses = async () => {
 
     return courses;
 };
+
+// Get settings from singleton Settings
+export const getSettings = async () => {
+    const reader = createReader(process.cwd(), keystaticConfig);
+    const settings = await reader.singletons.settings.read();
+
+    return settings;
+};
+
+// Get seo info from singleton SEO
+export const getSeo = async () => {
+    const reader = createReader(process.cwd(), keystaticConfig);
+    const seo = await reader.singletons.seo.read();
+
+    return seo;
+};
+
+// Get contact info from singleton Contact
+export const getContact = async () => {
+    const reader = createReader(process.cwd(), keystaticConfig);
+    const contact = await reader.singletons.contact.read();
+
+    return contact;
+};
+
+//  Get socials from singleton Socials
+export const getSocials = async () => {
+    const reader = createReader(process.cwd(), keystaticConfig);
+    const socials = await reader.singletons.socialMedia.read();
+
+    return socials;
+};

@@ -5,6 +5,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
+interface Setting {
+    siteName?: string;
+    logo?: string | null;
+    favicon?: string | null;
+}
+
 const navLinks = [
     {
         name: 'Anasayfa',
@@ -28,7 +34,9 @@ const navLinks = [
     },
 ];
 
-export default function Header() {
+type SettingsProp = { settings: Setting | null };
+
+export default function Header({ settings }: SettingsProp) {
     const [isOpen, setIsOpen] = React.useState(false);
     const [scrolled, setScrolled] = React.useState(false);
 

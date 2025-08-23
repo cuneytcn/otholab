@@ -1,0 +1,8 @@
+{
+  "email": "info@otholab.com",
+  "phone": "+90 555 123 45 67",
+  "address": {
+    "city": "Manisa",
+    "country": "Turkiye"
+  }
+}

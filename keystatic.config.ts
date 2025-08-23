@@ -1,8 +1,78 @@
-import { collection, config, fields } from '@keystatic/core';
+import { collection, config, fields, singleton } from '@keystatic/core';
 
 export default config({
     storage: {
         kind: 'local',
+    },
+    singletons: {
+        settings: singleton({
+            label: 'Settings',
+            path: 'src/content/settings',
+            format: { data: 'json' },
+            schema: {
+                siteName: fields.text({ label: 'Site Name' }),
+                // siteDescription: fields.text({
+                //     label: 'Site Description',
+                //     multiline: true,
+                // }),
+                logo: fields.image({
+                    label: 'Logo',
+                    directory: 'public/images',
+                    publicPath: '/images',
+                }),
+                favicon: fields.image({
+                    label: 'Favicon',
+                    directory: 'public/images',
+                    publicPath: '/images',
+                }),
+            },
+        }),
+        seo: singleton({
+            label: 'SEO',
+            path: 'src/content/seo',
+            format: { data: 'json' },
+            schema: {
+                title: fields.text({ label: 'Title' }),
+                description: fields.text({
+                    label: 'Description',
+                    multiline: true,
+                }),
+                keywords: fields.array(fields.text({ label: 'Keyword' }), {
+                    label: 'Keywords',
+                    itemLabel: (item) =>
+                        typeof item === 'string' ? item : 'Keyword',
+                }),
+            },
+        }),
+        contact: singleton({
+            label: 'Contact',
+            path: 'src/content/contact',
+            format: { data: 'json' },
+            schema: {
+                email: fields.text({ label: 'Email' }),
+                phone: fields.text({ label: 'Phone' }),
+                address: fields.object({
+                    street: fields.text({ label: 'Street' }),
+                    city: fields.text({ label: 'City' }),
+                    state: fields.text({ label: 'State' }),
+                    zip: fields.text({ label: 'ZIP Code' }),
+                    country: fields.text({ label: 'Country' }),
+                }),
+                mapEmbedUrl: fields.url({ label: 'Map Embed URL' }),
+            },
+        }),
+        socialMedia: singleton({
+            label: 'Social Media',
+            path: 'src/content/social-media',
+            format: { data: 'json' },
+            schema: {
+                facebook: fields.url({ label: 'Facebook' }),
+                twitter: fields.url({ label: 'Twitter' }),
+                instagram: fields.url({ label: 'Instagram' }),
+                linkedin: fields.url({ label: 'LinkedIn' }),
+                youtube: fields.url({ label: 'YouTube' }),
+            },
+        }),
     },
     collections: {
         team: collection({

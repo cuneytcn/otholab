@@ -2,7 +2,33 @@
 
 import Link from 'next/link';
 
-export default function Footer() {
+interface Contact {
+    email?: string;
+    phone?: string;
+    address?: {
+        street?: string | null;
+        city?: string | null;
+        state?: string | null;
+        zip?: string | null;
+        country?: string | null;
+    };
+    mapEmbedUrl?: string | null;
+}
+
+interface Social {
+    facebook?: string | null;
+    twitter?: string | null;
+    instagram?: string | null;
+    linkedin?: string | null;
+    youtube?: string | null;
+}
+
+type FooterProps = {
+    contact: Contact | null;
+    socials: Social | null;
+};
+
+export default function Footer({ contact, socials }: FooterProps) {
     return (
         <footer className="w-full bg-gray-900 text-white">
             <div className="container mx-auto px-6 py-16 lg:px-8">
@@ -29,7 +55,9 @@ export default function Footer() {
                         </p>
                         <div className="flex gap-4">
                             <a
-                                href="#"
+                                href={socials?.instagram || '#'}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-purple-500">
                                 <svg
                                     className="h-5 w-5"
@@ -39,7 +67,9 @@ export default function Footer() {
                                 </svg>
                             </a>
                             <a
-                                href="#"
+                                href={socials?.twitter || '#'}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-purple-500">
                                 <svg
                                     className="h-5 w-5"
@@ -49,7 +79,9 @@ export default function Footer() {
                                 </svg>
                             </a>
                             <a
-                                href="#"
+                                href={socials?.linkedin || '#'}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-purple-500">
                                 <svg
                                     className="h-5 w-5"
@@ -137,19 +169,29 @@ export default function Footer() {
                                 <span className="block font-medium">
                                     Email:
                                 </span>
-                                info@otholab.com
+                                {contact?.email || ''}
                             </p>
                             <p className="text-sm text-gray-400">
                                 <span className="block font-medium">
                                     Telefon:
                                 </span>
-                                +90 555 123 45 67
+                                {contact?.phone || ''}
                             </p>
                             <p className="text-sm text-gray-400">
                                 <span className="block font-medium">
                                     Adres:
                                 </span>
-                                Manisa, Türkiye
+                                {contact?.address
+                                    ? [
+                                          contact.address.street,
+                                          contact.address.city,
+                                          contact.address.state,
+                                          contact.address.zip,
+                                          contact.address.country,
+                                      ]
+                                          .filter(Boolean)
+                                          .join(', ')
+                                    : ''}
                             </p>
                         </div>
                     </div>
