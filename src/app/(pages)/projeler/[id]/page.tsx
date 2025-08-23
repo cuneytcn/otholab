@@ -1,6 +1,11 @@
-import { getProjectBySlug } from '@/lib/keystatic';
+import { getAllProjects, getProjectBySlug } from '@/lib/keystatic';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+
+export async function generateStaticParams() {
+    const projects = await getAllProjects();
+    return projects.map((project) => ({ id: project.id }));
+}
 
 export default async function Page({
     params,
@@ -9,8 +14,6 @@ export default async function Page({
 }) {
     const { id } = await params;
     const project = await getProjectBySlug(id);
-
-    console.log(project);
 
     if (!project) {
         notFound();
