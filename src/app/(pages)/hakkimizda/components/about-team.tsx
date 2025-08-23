@@ -1,26 +1,15 @@
-export default function AboutTeam() {
-    const team = [
-        {
-            name: 'Ahmet Yılmaz',
-            role: 'Kurucu Mimar',
-            description: '15+ yıllık deneyim ile mimari tasarım uzmanı',
-        },
-        {
-            name: 'Seda Kaya',
-            role: '3D Modelleme Uzmanı',
-            description: 'Fotorealistik görselleştirme konusunda expert',
-        },
-        {
-            name: 'Mehmet Demir',
-            role: 'Proje Yöneticisi',
-            description: 'Büyük ölçekli projelerin koordinasyonu',
-        },
-        {
-            name: 'Zeynep Şen',
-            role: 'İç Mimar',
-            description: 'Fonksiyonel ve estetik iç mekan tasarımları',
-        },
-    ];
+interface Member {
+    name: string;
+    role: string;
+    description: string;
+}
+
+interface Team {
+    data: Member[];
+}
+
+export default function AboutTeam({ data }: Team) {
+    const team = data;
 
     return (
         <section className="bg-white py-20">
@@ -41,8 +30,8 @@ export default function AboutTeam() {
                                 <span className="text-2xl font-bold text-white">
                                     {member.name
                                         .split(' ')
-                                        .map((n) => n[0])
-                                        .join('')}
+                                        .map((n: string) => n[0])
+                                        .join(' ')}
                                 </span>
                             </div>
                             <h3 className="mb-2 text-xl font-bold text-gray-900">

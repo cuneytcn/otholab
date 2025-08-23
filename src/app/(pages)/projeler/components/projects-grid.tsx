@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 
-interface Project {
-    id: string;
+export interface Project {
+    id?: string;
     title: string;
     description: string;
     longDescription: string;
@@ -18,58 +18,12 @@ interface Project {
     tags: string[];
 }
 
-const projects: Project[] = [
-    {
-        id: 'modern-villa-projesi',
-        title: 'Modern Villa Tasarımı',
-        description: 'Doğayla bütünleşen çağdaş villa projesi',
-        longDescription:
-            'Bu projede, müşterimizin ihtiyaçlarını modern mimari dille buluşturarak, doğal çevreyle uyumlu bir villa tasarladık. Geniş cam yüzeyler, açık plan yaşam alanları ve sürdürülebilir malzeme seçimleri ile çağdaş yaşamın konforunu sunan bir mekân yaratıldı. Proje, enerji verimliliği ve ekolojik duyarlılık prensipleri gözetilerek hayata geçirildi.',
-        images: [
-            '/images/hero-bg.jpg',
-            '/images/hero-bg.jpg',
-            '/images/hero-bg.jpg',
-        ],
-        technologies: [
-            'Sürdürülebilir Malzemeler',
-            'Akıllı Ev Sistemleri',
-            'Enerji Verimli Tasarım',
-            'Doğal Havalandırma',
-            'Yağmur Suyu Toplama',
-        ],
-        category: 'Konut',
-        date: '2024-03-15',
-        clientName: 'Özel Müşteri',
-        location: 'İstanbul, Zekeriyaköy',
-        area: '450 m²',
-        tags: ['Mimari Tasarım', '3D Model', 'İç Mekan'],
-    },
-    {
-        id: 'ofis-binasi-tasarimi',
-        title: 'Kurumsal Ofis Binası',
-        description: 'Çalışan odaklı modern ofis kompleksi',
-        longDescription:
-            'Şirketin kurumsal kimliğini yansıtan, çalışan refahını ön planda tutan bir ofis binası tasarladık. Açık çalışma alanları, sessiz odalar, sosyal alanlar ve yeşil teraslar ile çalışanların verimlilik ve mutluluğunu artıran bir mekân oluşturduk.',
-        images: ['/images/hero-bg.jpg', '/images/hero-bg.jpg'],
-        technologies: [
-            'LEED Sertifikalı',
-            'Akıllı Bina Teknolojileri',
-            'Modüler Tasarım',
-            'Yeşil Çatı',
-        ],
-        category: 'Ticari',
-        date: '2024-02-10',
-        clientName: 'ABC Teknoloji',
-        location: 'Ankara, Çankaya',
-        area: '2.500 m²',
-        tags: ['Ofis Tasarımı', '3D Görselleştirme', 'İç Mekan'],
-    },
-];
-
 export default function ProjectsGrid({
     activeFilter,
+    projects,
 }: {
     activeFilter: string;
+    projects: Project[];
 }) {
     const router = useRouter();
 
@@ -79,7 +33,7 @@ export default function ProjectsGrid({
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {projects.map((project) => {
                         return (
-                            (activeFilter === 'Tümü' ||
+                            (activeFilter === 'tümü' ||
                                 project.category === activeFilter) && (
                                 <div
                                     key={project.id}
@@ -99,7 +53,7 @@ export default function ProjectsGrid({
                                         </div>
                                     </div>
                                     <div className="p-6">
-                                        <span className="mb-3 inline-block rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-600">
+                                        <span className="mb-3 inline-block rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-600 capitalize">
                                             {project.category}
                                         </span>
                                         <h3 className="mb-2 text-xl font-bold text-gray-900">

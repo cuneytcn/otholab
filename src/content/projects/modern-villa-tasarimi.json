@@ -1,0 +1,26 @@
+{
+  "name": "Modern Villa Tasarımı",
+  "description": "Doğayla bütünleşen çağdaş villa projesi",
+  "images": [
+    "vhttps://miro.medium.com/1*cu3li6OyG8acAgFPxDQ2Uw.jpeg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrtKIcw40AtPvtn_zliJxllFhFUGj5nCF72Q&s",
+    "https://thursd.com/storage/media/48238/Toranomon-Azabudai-by-Heatherwick-Studio.jpg"
+  ],
+  "technologies": [
+    "Sürdürülebilir Malzemeler",
+    "Akıllı Ev Sistemleri",
+    "Enerji Verimli Tasarım",
+    "Doğal Havalandırma",
+    "Yağmur Suyu Toplama"
+  ],
+  "category": "konut",
+  "date": "2025-08-04",
+  "clientName": "Özel Müşteri",
+  "location": "İstanbul, Zekeriyaköy",
+  "area": "450 m²",
+  "tags": [
+    "Mimari Tasarım",
+    "3D Model",
+    "İç Mekan"
+  ]
+}

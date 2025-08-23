@@ -1,30 +1,32 @@
 'use client';
 
 import { useState } from 'react';
-import ProjectsGrid from './projects-grid';
+import ProjectsGrid, { Project } from './projects-grid';
 
 interface ProjectsFilterProps {
     onFilterChange?: (categoryId: string) => void;
+    data: Project[];
 }
 
 export default function ProjectsFilter({
     onFilterChange,
+    data,
 }: ProjectsFilterProps) {
-    const [activeFilter, setActiveFilter] = useState('Tümü');
+    const [activeFilter, setActiveFilter] = useState('tümü');
 
     const categories = [
-        { id: 'Tümü', name: 'Tümü' },
-        { id: 'Konut', name: 'Konut' },
-        { id: 'Ticari', name: 'Ticari' },
-        { id: 'İç Mekan', name: 'İç Mekan' },
-        { id: 'Peyzaj', name: 'Peyzaj' },
+        { id: 'tümü', name: 'Tümü' },
+        { id: 'konut', name: 'Konut' },
+        { id: 'ticari', name: 'Ticari' },
+        { id: 'ic-mekan', name: 'İç Mekan' },
+        { id: 'peyzaj', name: 'Peyzaj' },
     ];
 
     const handleFilterClick = (categoryId: string) => {
         setActiveFilter(categoryId);
         onFilterChange?.(categoryId);
 
-        console.log('Filter clicked:', categoryId);
+        // console.log('Filter clicked:', categoryId);
     };
 
     return (
@@ -47,7 +49,7 @@ export default function ProjectsFilter({
                     </div>
                 </div>
             </section>
-            <ProjectsGrid activeFilter={activeFilter} />
+            <ProjectsGrid activeFilter={activeFilter} projects={data} />
         </>
     );
 }

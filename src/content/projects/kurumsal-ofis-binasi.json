@@ -1,0 +1,26 @@
+{
+  "name": "Kurumsal Ofis Binası",
+  "description": "Çalışan odaklı modern ofis kompleksi",
+  "images": [
+    "vhttps://miro.medium.com/1*cu3li6OyG8acAgFPxDQ2Uw.jpeg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrtKIcw40AtPvtn_zliJxllFhFUGj5nCF72Q&s",
+    "https://thursd.com/storage/media/48238/Toranomon-Azabudai-by-Heatherwick-Studio.jpg"
+  ],
+  "technologies": [
+    "Sürdürülebilir Malzemeler",
+    "Akıllı Ev Sistemleri",
+    "Enerji Verimli Tasarım",
+    "Doğal Havalandırma",
+    "Yağmur Suyu Toplama"
+  ],
+  "category": "ticari",
+  "date": "2025-08-04",
+  "clientName": "ABC Teknoloji",
+  "location": "Ankara, Çankaya",
+  "area": "2.500 m²",
+  "tags": [
+    "Mimari Tasarım",
+    "3D Model",
+    "İç Mekan"
+  ]
+}

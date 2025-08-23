@@ -1,11 +1,14 @@
+import { getAllProjects } from '@/lib/keystatic';
 import ProjectsFilter from './components/projects-filter';
 import ProjectsHero from './components/projects-hero';
 
-export default function ProjelerPage() {
+export default async function Page() {
+    const allProjects = await getAllProjects();
+
     return (
         <main className="w-full">
             <ProjectsHero />
-            <ProjectsFilter />
+            <ProjectsFilter data={allProjects} />
         </main>
     );
 }

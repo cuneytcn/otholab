@@ -1,83 +1,21 @@
-import Image from 'next/image';
+import { getProjectBySlug } from '@/lib/keystatic';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-interface Project {
-    id: string;
-    title: string;
-    description: string;
-    longDescription: string;
-    images: string[];
-    technologies: string[];
-    category: string;
-    date: string;
-    clientName?: string;
-    location?: string;
-    area?: string;
-    projectUrl?: string;
-    tags: string[];
-}
-
 // Mimarlık projelerine uygun mock data
-const projects: Project[] = [
-    {
-        id: 'modern-villa-projesi',
-        title: 'Modern Villa Tasarımı',
-        description: 'Doğayla bütünleşen çağdaş villa projesi',
-        longDescription:
-            'Bu projede, müşterimizin ihtiyaçlarını modern mimari dille buluşturarak, doğal çevreyle uyumlu bir villa tasarladık. Geniş cam yüzeyler, açık plan yaşam alanları ve sürdürülebilir malzeme seçimleri ile çağdaş yaşamın konforunu sunan bir mekân yaratıldı. Proje, enerji verimliliği ve ekolojik duyarlılık prensipleri gözetilerek hayata geçirildi.',
-        images: [
-            '/images/hero-bg.jpg',
-            '/images/hero-bg.jpg',
-            '/images/hero-bg.jpg',
-        ],
-        technologies: [
-            'Sürdürülebilir Malzemeler',
-            'Akıllı Ev Sistemleri',
-            'Enerji Verimli Tasarım',
-            'Doğal Havalandırma',
-            'Yağmur Suyu Toplama',
-        ],
-        category: 'Konut',
-        date: '2024-03-15',
-        clientName: 'Özel Müşteri',
-        location: 'İstanbul, Zekeriyaköy',
-        area: '450 m²',
-        tags: ['Mimari Tasarım', '3D Model', 'İç Mekan'],
-    },
-    {
-        id: 'ofis-binasi-tasarimi',
-        title: 'Kurumsal Ofis Binası',
-        description: 'Çalışan odaklı modern ofis kompleksi',
-        longDescription:
-            'Şirketin kurumsal kimliğini yansıtan, çalışan refahını ön planda tutan bir ofis binası tasarladık. Açık çalışma alanları, sessiz odalar, sosyal alanlar ve yeşil teraslar ile çalışanların verimlilik ve mutluluğunu artıran bir mekân oluşturduk.',
-        images: ['/images/hero-bg.jpg', '/images/hero-bg.jpg'],
-        technologies: [
-            'LEED Sertifikalı',
-            'Akıllı Bina Teknolojileri',
-            'Modüler Tasarım',
-            'Yeşil Çatı',
-        ],
-        category: 'Ticari',
-        date: '2024-02-10',
-        clientName: 'ABC Teknoloji',
-        location: 'Ankara, Çankaya',
-        area: '2.500 m²',
-        tags: ['Ofis Tasarımı', '3D Görselleştirme', 'İç Mekan'],
-    },
-];
 
-async function getProject(id: string): Promise<Project | null> {
-    const project = projects.find((p) => p.id === id);
-    return project || null;
-}
+// async function getProject(id: string): Promise<Project | null> {
+//     const project = projects.find((p) => p.id === id);
+//     return project || null;
+// }
 
-export default async function ProjectDetailPage({
+export default async function Page({
     params,
 }: {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }) {
-    const project = await getProject(params.id);
+    const { id } = await params;
+    const project = await getProjectBySlug(id);
 
     if (!project) {
         notFound();
@@ -87,14 +25,6 @@ export default async function ProjectDetailPage({
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
             <section className="relative overflow-hidden bg-gray-900 py-32">
-                {/* <div className="absolute inset-0">
-                    <Image
-                        src="/images/hero-bg.jpg"
-                        alt="Project Background"
-                        fill
-                        className="object-cover opacity-40"
-                    />
-                </div> */}
                 <div className="relative z-10 container mx-auto px-4">
                     <div className="mx-auto max-w-4xl text-center text-white">
                         <Link
@@ -216,15 +146,14 @@ export default async function ProjectDetailPage({
                             <div className="mx-auto h-1 w-20 bg-gray-800"></div>
                         </div>
                         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                            {project.images.map((image, index) => (
+                            {project.images?.map((image, index) => (
                                 <div
                                     key={index}
                                     className="group relative overflow-hidden">
                                     <div className="relative h-96 bg-gray-200">
-                                        <Image
+                                        <img
                                             src={image}
                                             alt={`${project.title} - Görsel ${index + 1}`}
-                                            fill
                                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
                                         <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20"></div>
@@ -362,10 +291,4 @@ export default async function ProjectDetailPage({
             </section>
         </div>
     );
-}
-
-export async function generateStaticParams() {
-    return projects.map((project) => ({
-        id: project.id,
-    }));
 }
