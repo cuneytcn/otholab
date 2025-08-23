@@ -96,8 +96,29 @@ export default config({
             schema: {
                 name: fields.slug({
                     name: { label: 'Name' },
-                    slug: { label: 'Slug' },    
+                    slug: { label: 'Slug' },
                 }),
+                duration: fields.text({ label: 'Duration' }),
+                level: fields.select({
+                    label: 'Level',
+                    options: [
+                        { label: 'Başlangıç', value: 'Başlangıç' },
+                        { label: 'Orta', value: 'Orta' },
+                        { label: 'İleri', value: 'İleri' },
+                    ],
+                    defaultValue: 'Başlangıç',
+                }),
+                price: fields.text({ label: 'Price' }),
+                description: fields.text({
+                    label: 'Description',
+                    multiline: true,
+                }),
+                features: fields.array(fields.text({ label: 'Feature' }), {
+                    label: 'Features',
+                    itemLabel: (item) =>
+                        typeof item === 'string' ? item : 'Feature',
+                }),
+                paymentLink: fields.url({ label: 'Payment Link' }),
             },
         }),
     },

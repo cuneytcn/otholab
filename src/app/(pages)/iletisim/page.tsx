@@ -2,7 +2,7 @@ import ContactForm from './components/contact-form';
 import ContactHero from './components/contact-hero';
 import ContactInfo from './components/contact-info';
 
-export default function IletisimPage() {
+export default function Page() {
     return (
         <main className="w-full">
             <ContactHero />

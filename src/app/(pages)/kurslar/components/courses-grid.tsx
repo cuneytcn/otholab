@@ -1,91 +1,16 @@
-export default function CoursesGrid() {
-    const courses = [
-        {
-            id: 1,
-            title: '3D Modelleme Temelleri',
-            duration: '8 Hafta',
-            level: 'Başlangıç',
-            price: '2.500₺',
-            description:
-                '3D modelleme programlarının temellerini öğrenin ve ilk projelerinizi oluşturun.',
-            features: ['3ds Max', 'SketchUp', 'Temel Modelleme', 'Rendering'],
-        },
-        {
-            id: 2,
-            title: 'Mimari Tasarım İlkeleri',
-            duration: '12 Hafta',
-            level: 'Orta',
-            price: '3.500₺',
-            description:
-                'Mimari tasarım prensiplerini ve modern yaklaşımları detaylı olarak öğrenin.',
-            features: [
-                'Tasarım Teorisi',
-                'Plan Okuma',
-                'Cephe Tasarımı',
-                'Proje Geliştirme',
-            ],
-        },
-        {
-            id: 3,
-            title: 'Fotorealistik Görselleştirme',
-            duration: '10 Hafta',
-            level: 'İleri',
-            price: '4.200₺',
-            description:
-                'Profesyonel seviyede görselleştirme teknikleri ve render yöntemleri.',
-            features: [
-                'V-Ray',
-                'Corona Renderer',
-                'Post-Production',
-                'Animasyon',
-            ],
-        },
-        {
-            id: 4,
-            title: 'İç Mekan Tasarımı',
-            duration: '6 Hafta',
-            level: 'Başlangıç',
-            price: '2.000₺',
-            description:
-                'Fonksiyonel ve estetik iç mekan tasarım yaklaşımlarını keşfedin.',
-            features: [
-                'Renk Teorisi',
-                'Mobilya Seçimi',
-                'Aydınlatma',
-                'Mekan Organizasyonu',
-            ],
-        },
-        {
-            id: 5,
-            title: 'Peyzaj Tasarımı',
-            duration: '8 Hafta',
-            level: 'Orta',
-            price: '2.800₺',
-            description:
-                'Dış mekan tasarımı ve peyzaj planlama prensiplerini öğrenin.',
-            features: [
-                'Bitki Seçimi',
-                'Topografya',
-                'Su Ögeleri',
-                'Sürdürülebilirlik',
-            ],
-        },
-        {
-            id: 6,
-            title: 'BIM ve Teknik Çizim',
-            duration: '14 Hafta',
-            level: 'İleri',
-            price: '5.000₺',
-            description:
-                'Building Information Modeling ve detay teknik çizim teknikleri.',
-            features: [
-                'AutoCAD',
-                'Revit',
-                'BIM Metodolojisi',
-                'Teknik Detaylar',
-            ],
-        },
-    ];
+interface Course {
+    id: string;
+    title: string;
+    duration: string;
+    level: string;
+    price: string;
+    description: string;
+    features: string[];
+    paymentUrl: string;
+}
+
+export default function CoursesGrid({ data }: { data: Course[] }) {
+    const courses = data;
 
     return (
         <section className="bg-white py-20">
@@ -117,7 +42,7 @@ export default function CoursesGrid() {
                                     {course.level}
                                 </span>
                                 <span className="text-2xl font-bold text-purple-600">
-                                    {course.price}
+                                    {course.price}₺
                                 </span>
                             </div>
 
@@ -162,9 +87,13 @@ export default function CoursesGrid() {
                                 </div>
                             </div>
 
-                            <button className="w-full transform rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                            <a
+                                href={course.paymentUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full transform cursor-pointer rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 py-3 text-center font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
                                 Hemen Kayıt Ol
-                            </button>
+                            </a>
                         </div>
                     ))}
                 </div>

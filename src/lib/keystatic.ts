@@ -68,3 +68,24 @@ export const getProjectBySlug = async (slug: string) => {
         tags: Array.isArray(item.tags) ? [...item.tags] : [],
     };
 };
+
+// ALl Courses
+export const getAllCourses = async () => {
+    const reader = createReader(process.cwd(), keystaticConfig);
+    const coursesRaw = await reader.collections.courses.all();
+    const courses = coursesRaw.map((item) => ({
+        id: item.slug ?? undefined,
+        name: item.entry.name ?? '',
+        title: item.entry.name ?? '',
+        description: item.entry.description ?? '',
+        level: item.entry.level ?? '',
+        price: item.entry.price ?? '',
+        duration: item.entry.duration ?? '',
+        features: Array.isArray(item.entry.features)
+            ? [...item.entry.features]
+            : [],
+        paymentUrl: item.entry.paymentLink ?? '',
+    }));
+
+    return courses;
+};

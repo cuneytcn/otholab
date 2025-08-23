@@ -2,13 +2,6 @@ import { getProjectBySlug } from '@/lib/keystatic';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-// Mimarlık projelerine uygun mock data
-
-// async function getProject(id: string): Promise<Project | null> {
-//     const project = projects.find((p) => p.id === id);
-//     return project || null;
-// }
-
 export default async function Page({
     params,
 }: {
@@ -16,6 +9,8 @@ export default async function Page({
 }) {
     const { id } = await params;
     const project = await getProjectBySlug(id);
+
+    console.log(project);
 
     if (!project) {
         notFound();

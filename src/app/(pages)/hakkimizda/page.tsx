@@ -4,7 +4,7 @@ import AboutHistory from './components/about-history';
 import AboutStats from './components/about-stats';
 import AboutTeam from './components/about-team';
 
-export default async function HakkimizdaPage() {
+export default async function Page() {
     const allTeam = await getAllTeam();
 
     return (

@@ -1,0 +1,14 @@
+{
+  "name": "3D Modelleme Temelleri",
+  "duration": "8 Hafta",
+  "level": "Başlangıç",
+  "price": "2.500",
+  "description": "3D modelleme programlarının temellerini öğrenin ve ilk projelerinizi oluşturun.",
+  "features": [
+    "3ds Max",
+    "SketchUp",
+    "Temel Modelleme",
+    "Rendering"
+  ],
+  "paymentLink": "https://www.google.com/"
+}

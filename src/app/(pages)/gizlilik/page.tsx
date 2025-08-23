@@ -1,4 +1,4 @@
-export default function GizlilikPage() {
+export default function Page() {
     return (
         <main className="w-full">
             {/* Hero Section */}
